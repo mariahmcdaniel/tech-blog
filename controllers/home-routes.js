@@ -1,10 +1,15 @@
 const router = require('express').Router();
-const {} = require('../models/');
+const {Post, User, Comment} = require('../models/');
 
 // get all posts for homepage
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage');
+    const postData = await Post.findAll({
+      include: [{ model: User }]
+    });
+    const posts = postData.map((post) =>
+    post.get({ plain: true }));
+    res.render('homepage', { posts });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -26,6 +31,44 @@ router.get('/signup', (req, res) => {
   }
 
   res.render('signup');
+});
+
+router.get('/dashboard', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('dashboard');
+});
+
+router.get('/viewpost/:id', async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+  try{
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: User, 
+      }],
+      include: [ {
+         model: Comment,
+         where: {
+           post_id: req.params.id 
+          },
+          include: [{ model: User }]
+         }],
+    });
+    const post = postData.get({ plain: true });
+    res.render('viewpost', { post });
+} catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+}
 });
 
 module.exports = router;

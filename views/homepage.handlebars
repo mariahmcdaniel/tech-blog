@@ -1,1 +1,11 @@
-<h1>Homepage</h1>
+<section class="container-fluid homePgCont">
+<div class="row justify-content-md-center postSnips">
+<h1>Recent Posts</h1>
+{{#each posts as |post|}}
+<div class="col col-12 p-2 text-center">
+  <a class="postSnip" href="/{{id}}">{{title}}</a>
+  <p>{{content}}</p>
+</div>
+{{/each}}
+</div>
+</section>
