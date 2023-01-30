@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) =>
     post.get({ plain: true }));
     res.render('homepage', { posts });
+    // res.json(postData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -33,13 +34,45 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
-    return;
+    return; 
   }
+  try {
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.userId
+      },
+      include: {model: User}
+    });
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('dashboard', { posts });
+    // res.json(postData);
+  } catch (err) {
+  res.status(500).json(err);
+}
+});
 
-  res.render('dashboard');
+router.get('/dashboard/edit/:id', async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return; 
+  }
+  try {
+    const postData = await Post.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: User}]
+    })
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('editpost', { posts })
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/viewpost/:id', async (req, res) => {
@@ -65,6 +98,7 @@ router.get('/viewpost/:id', async (req, res) => {
     });
     const post = postData.get({ plain: true });
     res.render('viewpost', { post });
+    // res.json(postData);
 } catch (err) {
   console.log(err);
   res.status(500).json(err);

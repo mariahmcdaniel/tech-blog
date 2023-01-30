@@ -17,7 +17,7 @@ Post.init(
       allowNull: false
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     user_id: {
@@ -32,7 +32,7 @@ Post.init(
     sequelize,
     freezeTableName: true, 
     underscored: true, 
-    modelName: 'comment'
+    modelName: 'post'
   }
 );
 

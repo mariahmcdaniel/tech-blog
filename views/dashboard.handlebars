@@ -1,0 +1,11 @@
+<section class="container-fluid userPostsContainer">
+  <div class="row justify-content-md-center userPosts">
+    {{#each posts as |post|}}
+    <div class="col-12">
+      <header>{{title}}</header>
+      <p>{{content}}</p>
+      <p class="auth-time">Written By:{{users.username}} {{format_date created_at}}</p>
+      <a class="editBtn" href="/dashboard/edit/{{id}}">Edit</a>
+    </div>
+  </div>
+</section>

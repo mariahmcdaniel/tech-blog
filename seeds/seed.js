@@ -13,12 +13,12 @@ const init = async () => {
     returning: true,
   });
   const posts = await Post.bulkCreate(postData, {
-
+    
   });
+  
   const comments = await Comment.bulkCreate(commentData, {
-
+    
   });
-
   process.exit(0);
 };
 
