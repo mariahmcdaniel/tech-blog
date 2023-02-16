@@ -105,4 +105,13 @@ router.get('/viewpost/:id', async (req, res) => {
 }
 });
 
+
+router.get('/createpost', async (req,res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('newpost')
+})
+
 module.exports = router;

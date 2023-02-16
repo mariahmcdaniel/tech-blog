@@ -1,0 +1,14 @@
+<section class="container-fluid editPostContainer">
+  <div class="row justify-content-md-center editPosts">
+    <div class="col-12">
+      <textarea id="editTitle" name="title" rows="1" cols="33">
+        {{title}}
+      </textarea>
+      <textarea id="editContent" name="content" rows="5" cols="33">
+        {{content}}
+      </textarea>
+      <p class="auth-time">Written By:{{users.username}} {{format_date created_at}}</p>
+      <a class="saveBtn" href="/dashboard">Save</a>
+    </div>
+  </div>
+</section>

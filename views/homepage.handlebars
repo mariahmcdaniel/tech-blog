@@ -3,8 +3,10 @@
 <h1>Recent Posts</h1>
 {{#each posts as |post|}}
 <div class="col col-12 p-2 text-center">
-  <a class="postSnip" href="/{{id}}">{{title}}</a>
+  <a class="postSnip" href="/viewpost/{{id}}">{{title}}
   <p>{{content}}</p>
+  <p class="auth-time">Written By:{{users.username}} {{format_date created_at}}</p>
+  </a>
 </div>
 {{/each}}
 </div>
