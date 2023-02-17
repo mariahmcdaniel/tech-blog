@@ -1,14 +1,19 @@
 <section class="container-fluid editPostContainer">
   <div class="row justify-content-md-center editPosts">
     <div class="col-12">
+      <form id="editPostForm" class="editPostForm"></form>
+      <label for="editTitle" id="editTitleLabel" class="form-label">Title</label>
       <textarea id="editTitle" name="title" rows="1" cols="33">
-        {{title}}
+      {{title}}
       </textarea>
+      <label for="editContent" id="editContentLabel" class="form-label">Content</label>
       <textarea id="editContent" name="content" rows="5" cols="33">
-        {{content}}
+      {{content}}
       </textarea>
       <p class="auth-time">Written By:{{users.username}} {{format_date created_at}}</p>
-      <a class="saveBtn" href="/dashboard">Save</a>
+      <button type="submit" class="saveBtn">Save</button>
+      <button type="delete" class="deleteBtn"></button>
+      </form>
     </div>
   </div>
 </section>

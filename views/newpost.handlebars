@@ -1,9 +1,16 @@
 <section class="container-fluid editPostContainer">
   <div class="row justify-content-md-center editPosts">
     <div class="col-12">
-      <textarea id="newTitle" name="title" rows="1" cols="33" placeholder="Add a title..."></textarea>
-      <textarea id="newContent" name="content" rows="5" cols="33" placeholder="Your blog-post content goes here..."></textarea>
-      <a class="saveBtn" href="/dashboard">Save</a>
+      <form class="newPostForm" id="newPostForm">
+        <label for="newTitle" class="form-lable">Title</label>
+        <textarea id="newTitle" name="newtitle" rows="1" cols="33" placeholder="Add a title..."></textarea>
+        <label for="newContent" class="form-lable">Content</label>
+        <textarea id="newContent" name="content" rows="5" cols="33"
+          placeholder="Your blog post content goes here..."></textarea>
+        <button id="submitNewPost" type="submit" class="saveBtn">Save</button>
+      </form>
     </div>
   </div>
 </section>
+
+<script src="/js/add-post.js"></script>
