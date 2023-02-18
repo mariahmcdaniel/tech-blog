@@ -1,0 +1,38 @@
+.newPost {
+  margin-top: 100px;
+}
+
+.username {
+  color: rgb(45, 68, 68);
+  font-weight: bold;
+}
+
+.postSnips {
+  margin-top: 50px;;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  margin-right: 70px;
+  background-color: rgba(231, 239, 242, 0.368);
+  display: block;
+  padding: 20px;
+  filter: drop-shadow(2px 2px 10px #ffffff88);
+  border-radius: 50px;
+  border: 2px solid rgba(245, 245, 245, 0.29);
+}
+
+.card-header {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  text-decoration: none;
+  border: 2px solid rgba(128, 128, 128, 0.122);
+}
+
+.postLink:hover {
+  filter: drop-shadow(4px 4px 4px #08080857);
+}
+
+.viewHeader {
+  margin-top: 100px;
+}
