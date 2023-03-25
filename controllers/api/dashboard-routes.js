@@ -47,20 +47,6 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-//delete user
-
-router.delete('/dashboard/delete-account/:id', async (req, res) => {
-    try {
-        const userData = await User.destroy({
-            where: { id: req.params.id }
-        });
-        res.json(userData);
-    } catch (err) {
-        console.error(err);
-        res.json(err);
-    }
-});
-
 // add comments to a post
 
 router.post('/comment', async (req, res) => {

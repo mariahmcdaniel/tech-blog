@@ -8,7 +8,7 @@ async function commentFormHandler(event) {
   const userId = document.querySelector('#userId').value;
 
   if (content){
-    const response = await fetch('api/dashboard/comment', {
+    const response = await fetch('/api/dashboard/comment', {
       method: 'POST',
       body: JSON.stringify({
         post_id: postId,
