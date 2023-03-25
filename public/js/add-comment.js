@@ -5,13 +5,15 @@ async function commentFormHandler(event) {
   const postId = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
+  const userId = document.querySelector('#userId').value;
 
   if (content){
     const response = await fetch('api/dashboard/comment', {
       method: 'POST',
       body: JSON.stringify({
-        postId,
-        content,
+        post_id: postId,
+        text: content,
+        user_id: userId,
       }),
       headers: {
         'Content-Type': 'application/json',

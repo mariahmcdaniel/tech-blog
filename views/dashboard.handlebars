@@ -1,10 +1,10 @@
 <section class="container-fluid userPostsContainer">
   <div class="row justify-content-md-center userPosts">
-    <a id="newPost" class="newPost btn btn-primary p-2 mb-4" href="/dashboard/new">Create New Post</a>
+    <a id="newPost" class="newPostBtn btn btn-primary" href="/new-post">Create A New Post</a>
     {{#each posts as |post|}}
       <div class="col-12">
         <div class="card border-primary mb-3" style="max-width: 90rem;">
-          <div class="card-header"><a id="editPost" class="editPost" href="/dashboard/edit/{{id}}">{{title}}</a></div>
+          <div class="card-header dashHead"><a class="editPost" href="/edit-post/{{id}}">{{title}}</a></div>
           <div class="card-body">
             <p class="card-text">{{content}}</p>
             <p class="card-footer auth-time">Written By: <span class="username">{{post.user.username}}</span>

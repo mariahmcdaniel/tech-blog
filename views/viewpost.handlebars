@@ -2,7 +2,7 @@
   <div class="row justify-content-md-center viewPost">
     <div class="col-12">
       <div class="viewHeader card border-primary p-4 py-3 mb-3" style="max-width: 80rem;">
-      <header class="card-header p-2">{{post.title}}</header>
+      <header class="card-header p-2 viewHead">{{post.title}}</header>
       <div class="card-body p-2">
       <p class="card-text">{{post.content}}</p>
       <p class="card-footer auth-time">Written By: <span class="username">{{post.user.username}}</span> {{format_date post.created_at}}</p>
@@ -16,12 +16,13 @@
           placeholder="Add a comment..."></textarea>
         </label>
         <br/>
+        <input type="hidden" id="userId" name="userId" value="{{userId}}">
         <button type="submit" class="btn btn-primary submitBtn saveBtn" id="submitComment">Submit</button>
       </form>
       {{#each post.comments as |comment|}}
       <div class="col-12 mt-4">
       <div class="card border-secondary mb-3" style="max-width: 20rem;">
-          <header class="commentTitle card-header"><span class="username">{{comment.user.username}}</span> {{format_date comment.created_at}}</header>
+          <header class="commentTitle card-header commentHead"><span class="username">{{comment.user.username}}</span> {{format_date comment.created_at}}</header>
           <div class="card-body">
           <p class="card-text commentText">{{comment.text}}</p>
           </div>

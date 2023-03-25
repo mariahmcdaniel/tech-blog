@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models/');
 const withAuth = require('../utils/auth');
 
-// get all posts for homepage
+// get all posts
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -26,28 +26,21 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('login');
-});
+//create new post 
 
-router.get('/signup', (req, res) => {
-  res.render('signup');
-});
-
-router.get('/dashboard/new', async (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-    return;
-  }
-  res.render('newpost', { 
+router.get('/new-post', async (req, res) => {
+  try {
+    res.render('newpost', { 
     loggedIn: req.session.loggedIn,
     username: req.session.username,
-   });
+    id: req.session.userId,
+  });
+} catch (err) {
+  res.status(500).json(err);
+}
 });
+
+//user dashboard
 
 router.get('/dashboard/:id', async (req, res) => {
   try {
@@ -79,7 +72,9 @@ router.get('/dashboard/:id', async (req, res) => {
   }
 });
 
-router.get('/dashboard/edit/:id', async (req, res) => {
+//edit post
+
+router.get('/edit-post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id,{
       attributes: ['id', 'title', 'content', 'user_id', 'created_at'],
@@ -92,7 +87,8 @@ router.get('/dashboard/edit/:id', async (req, res) => {
     res.render('editpost', { 
       post, 
       loggedIn: true, 
-      username: req.session.username, 
+      username: req.session.username,
+      userId: req.session.userId, 
     });
     // res.json(postData);
   }
@@ -101,7 +97,9 @@ router.get('/dashboard/edit/:id', async (req, res) => {
   }
 });
 
-router.get('/viewpost/:id', async (req, res) => {
+// view a post and its comments
+
+router.get('/view-post/:id', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
     return;
@@ -128,24 +126,36 @@ router.get('/viewpost/:id', async (req, res) => {
         attributes:  ['username'],
       },
     ],
-    });
-    if (!postData){
-      res.status(404).json({message: 'No post found with this id'});
-      return;
-    }
-    const post = postData.get({ plain: true });
-    res.render('viewpost', { 
-      post,
-      loggedIn: req.session.loggedIn,
-      username: req.session.username,
-     });
-    // res.json(postData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+  });
+  if (!postData){
+    res.status(404).json({message: 'No post found with this id'});
+    return;
   }
+  const post = postData.get({ plain: true });
+  res.render('viewpost', { 
+    post,
+    loggedIn: req.session.loggedIn,
+    username: req.session.username,
+    userId: req.session.userId,
+  });
+  // res.json(postData);
+} catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+}
 });
 
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
 
 
 

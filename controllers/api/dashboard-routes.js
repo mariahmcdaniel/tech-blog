@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { Post, Comment } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 
 
 
-router.put('/posts/:id', async (req, res) => {
+router.put('/edit-post/:id', async (req, res) => {
     try {
         const postData = await Post.update({
             title: req.body.title,
@@ -31,7 +31,7 @@ router.put('/posts/:id', async (req, res) => {
     }
 });
 
-router.delete('/posts/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         const postData = await Post.destroy({
             where: { id: req.params.id }
@@ -43,7 +43,7 @@ router.delete('/posts/:id', async (req, res) => {
     }
 });
 
-// creating comments onto posts
+// adding comments to posts
 
 router.post('/comment', async (req, res) => {
     console.log(req.body)

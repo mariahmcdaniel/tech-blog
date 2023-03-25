@@ -4,7 +4,7 @@
 {{#each posts as |post|}}
 <div class="col col-8 py-4 text-center">
 <div class="card border-primary p-4 py-3 mb-3" style="max-width: 80rem;">
-  <header class="postLink card-header p-2"><a class="postSnip" href="/viewpost/{{id}}">{{title}}</a></header>
+  <header class="homeHead postLink card-header p-2"><a class="postSnip" href="/view-post/{{id}}">{{title}}</a></header>
   <div class="card-body p-2">
   <p class="card-text">{{content}}</p>
   <p class="card-footer auth-time">Written By: <span class="username">{{post.user.username}}</span> {{format_date created_at}}</p>
