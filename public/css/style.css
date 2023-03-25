@@ -26,10 +26,35 @@
 .saveBtn {
   margin-bottom: 10px;
   padding: 14px 40px;
-  background: rgb(154,158,255);
+  /* background: rgb(154,158,255); */
   background: linear-gradient(0deg, rgba(154,158,255,1) 0%, rgba(217,227,241,1) 4%, rgba(217,227,241,1) 48%, rgba(217,227,241,1) 96%, rgba(154,158,255,1) 100%);
   border: 2px solid rgba(154,158,255,1);
   font-size: clamp(1.2rem, 2vw, 1.4rem);
+}
+
+.deleteBtn {
+  margin-bottom: 10px;
+  padding: 14px 20px;
+  /* background-color: #ff000055 !important; */
+  /* background: rgb(99, 0, 27); */
+  background: linear-gradient(0deg, rgb(75, 0, 0) 0%, #ff9b9b97 4%, rgba(195, 75, 75, 0.418) 48%, rgba(217,227,241,1) 96%, rgb(72, 0, 0) 100%);
+  border: 2px solid rgb(105, 0, 47);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  color: #384871;
+}
+
+#postsRem {
+  text-align: center;
+}
+
+#deleteAcctBtn{
+  max-width: 250px;
+  padding: 2px 20px;
+  margin-top: 50px;
+}
+
+.logoutNav{
+  padding: 0px 3px;
 }
 
 .formCol{
@@ -106,4 +131,8 @@ form {
 
 .dashHead {
   box-shadow: inset 2px 2px 5px #974fe5, inset -2px -2px 5px #e4caff;
+}
+
+#deleteAcctFr {
+  align-items: center;
 }

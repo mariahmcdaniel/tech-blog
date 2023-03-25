@@ -14,4 +14,12 @@
         </div>
     {{/each}}
   </div>
+  <form id= "deleteAcctFr">
+  <input type="hidden" id="userId" name="userId" value="{{id}}">
+  <button type="sumbit" class="btn btn-primary deleteBtn" id="deleteAcctBtn">Delete Your Account</button>
+  </form>
+  <br>
+  <p id="postsRem">( Your posts will remain )</p>
 </section>
+
+<script src="/js/delete-account.js"></script>

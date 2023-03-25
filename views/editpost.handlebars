@@ -1,6 +1,6 @@
 <section class="container-fluid editPostContainer">
   <h1>Edit your post</h1>
-  <div class="row mt-4 justify-content-md-center editPosts">
+  <div class="row mt-4 justify-content-center editPosts">
     <div class="col-12">
       <form id="editPostForm" class="editPostForm"></form>
       <label for="editTitle" id="editTitleLabel" class="form-label">Title</label>
@@ -8,7 +8,7 @@
       <textarea id="editTitle" name="title" rows="1" cols="33">{{post.title}}</textarea>
       </div>
       </div>
-      <div class="row justify-content-md-center editPosts">
+      <div class="row justify-content-center editPosts">
     <div class="col-12">
       <label for="editContent" id="editContentLabel" class="form-label">Content</label>
        <br/>
@@ -19,7 +19,7 @@
       <button type="submit" class="btn btn-primary saveBtn">Save</button>
       <input type="hidden" id="userId" name="userId" value="{{userId}}">
       </form>
-      <button type="button" class="btn btn-primary deleteBtn" id="deleteBtn">Delete</button>
+      <button type="button" class="btn btn-primary deleteBtn" id="deleteBtn">Delete Post</button>
 </section>
 
 <script src="/js/delete-post.js"></script>
