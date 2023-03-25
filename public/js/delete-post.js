@@ -1,4 +1,4 @@
-async function deleteBtnHandler(event){
+const deleteBtnHandler = async function (event){
   event.preventDefault();
 
   const id = window.location.toString().split('/')[

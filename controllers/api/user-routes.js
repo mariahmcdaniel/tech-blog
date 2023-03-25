@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+//create user account
+
 router.post('/', async (req, res) => {
   try {
     const newUser = await User.create({
@@ -19,6 +21,8 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//login
 
 router.post('/login', async (req, res) => {
   try {
@@ -52,6 +56,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
+//logout
+
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -59,6 +65,19 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+//delete user account
+
+router.delete('/delete-account/:id', async (req, res) => {
+  try {
+      const userData = await User.destroy({
+          where: { id: req.params.id }
+      });
+      res.json(userData);
+  } catch (err) {
+      console.error(err);
+      res.json(err);
   }
 });
 

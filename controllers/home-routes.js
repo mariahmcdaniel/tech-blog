@@ -66,6 +66,7 @@ router.get('/dashboard/:id', async (req, res) => {
       posts,
       loggedIn: true,
       username: req.session.username,
+      userId: req.session.userId,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -154,6 +155,10 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
+  if (req.session.loggedIn){
+    res.redirect('/');
+    return
+  }
   res.render('signup');
 });
 

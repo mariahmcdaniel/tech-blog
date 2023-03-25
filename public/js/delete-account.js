@@ -1,4 +1,17 @@
-async function deleteBtnHandler(event){
+const endSesh = async function() {
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Failed to log out');
+  }
+};
+
+const deleteAcctHandler = async function (event){
   event.preventDefault();
 
   // const id = window.location.toString().split('/')[
@@ -6,15 +19,16 @@ async function deleteBtnHandler(event){
   // ];
   const userId = document.querySelector('#userId').value
 
-  const response = await fetch(`/api/dashboard/delete-account/${userId}`, {
+  const response = await fetch(`/api/users/delete-account/${userId}`, {
     method: 'DELETE',
   });
 
   if (response.ok){
-    document.location.replace(`/`);
+    endSesh();
+    return;
   } else {
     alert(response.statusText);
   }
 } 
 
-document.querySelector('#deleteAcctBtn').addEventListener('click', deleteBtnHandler);
+document.querySelector('#deleteAcctBtn').addEventListener('click', deleteAcctHandler);
