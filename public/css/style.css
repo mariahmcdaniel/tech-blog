@@ -100,6 +100,14 @@ h1 {
   filter: drop-shadow(4px 4px 4px #08080857);
 }
 
+#noPostsCont {
+  display: flex;
+  justify-content: center;
+  background-color: #e0e9f7;
+  padding: 100px;
+  color: #a4b5cc;
+}
+
 .viewHeader {
   margin-top: 30px;
 }

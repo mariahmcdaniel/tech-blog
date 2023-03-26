@@ -1,6 +1,7 @@
 <section class="container-fluid userPostsContainer">
   <div class="row justify-content-center userPosts">
     <a id="newPost" class="newPostBtn btn btn-primary" href="/new-post">Create A New Post</a>
+    {{#if posts}}
     {{#each posts as |post|}}
       <div class="col-12">
         <div class="card border-primary mb-3" style="max-width: 90rem;">
@@ -13,13 +14,20 @@
           </div>
         </div>
     {{/each}}
+    {{else}}
+    <div class="col-12">
+      <section id="noPostsCont">
+        <p id="noPostsMsg">You haven't written any blog posts yet...</p>
+      </section>
+    </div>
+    {{/if}}
   </div>
   <form id="deleteAcctFr">
   <input type="hidden" id="userId" name="userId" value="{{userId}}">
   <button type="sumbit" class="btn btn-primary deleteBtn" id="deleteAcctBtn">Delete Your Account</button>
   </form>
   <br>
-  <p id="postsRem">( Your posts will remain )</p>
+  <p id="postsRem">( This will not remove any content that you are actively sharing )</p>
 </section>
 
 <script src="/js/delete-account.js"></script>
