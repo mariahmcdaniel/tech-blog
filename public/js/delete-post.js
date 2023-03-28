@@ -17,4 +17,4 @@ const deleteBtnHandler = async function (event){
   }
 } 
 
-document.querySelector('#deleteBtn').addEventListener('click', deleteBtnHandler);
+document.querySelector('#deletePostBtn').addEventListener('click', deleteBtnHandler);

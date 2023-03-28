@@ -1,10 +1,12 @@
 .newPostBtn {
   margin-top: 30px;
-  padding: 30px 20px;
+  padding: 20px 100px;
   font-size: clamp(1.5rem, 2vw, 1.9rem);
   margin-bottom: 30px;
   background: rgb(243,255,219);
   background: linear-gradient(0deg, rgba(243,255,219,1) 0%, rgba(217,227,241,1) 20%, rgba(217,227,241,1) 48%, rgba(217,227,241,1) 74%, rgba(182,213,255,1) 100%);
+  filter: drop-shadow(3px 4px 4px #7b797965);
+  max-width: fit-content;
 }
 
 .newPost {
@@ -45,11 +47,12 @@
 
 #postsRem {
   text-align: center;
+  margin-bottom: 40px;
 }
 
 #deleteAcctBtn{
   padding: 2px 20px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .logoutNav{
@@ -68,15 +71,33 @@
   font-weight: bold;
 }
 
+.editPostContainer{
+  flex-direction: column;
+  align-items: center;
+}
+
+#editPostTxt{
+  border-radius: 0%;
+  padding: 10px 200px;
+}
+
+#editTitleLabel, #editContentLabel {
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+}
+
 .postSnips {
   margin-top: 30px;;
 }
 
-.viewHead {
-box-shadow: inset 2px 2px 5px #e5e25e, inset -2px -2px 5px #fffec9;
+.viewPostContainer {
+  margin-bottom: 40px;
 }
 
-h1 {
+.viewHead {
+box-shadow: inset 2px 2px 5px #088429, inset -2px -2px 5px #acff80;
+}
+
+h1, h3 {
   text-align: center;
   margin-top: 30px;
   /* margin-right: 70px; */
@@ -87,6 +108,26 @@ h1 {
   filter: drop-shadow(2px 2px 10px #ffffff88);
   border-radius: 50px;
   border: 2px solid rgba(245, 245, 245, 0.29);
+}
+
+h2 {
+  text-align: center;
+  margin-top: 30px;
+  background: rgb(182,213,255);
+  background: linear-gradient(0deg, rgba(182,213,255,1) 0%, rgba(217,227,241,1) 20%, rgba(217,227,241,1) 48%, rgba(217,227,241,1) 74%, rgba(182,213,255,1) 100%);
+  display: block;
+  padding: 10px;
+  filter: drop-shadow(2px 2px 10px #ffffff88);
+  /* border: 2px solid rgba(245, 245, 245, 0.29); */
+}
+
+#editBtnDiv {
+  display: flex;
+  justify-content: center;
+}
+
+#editBtn {
+  padding: 5px 20px;
 }
 
 .card-header {
@@ -116,6 +157,27 @@ h1 {
   margin-bottom: 10px;
 }
 
+#submitComment{
+  max-width: fit-content;
+  filter: drop-shadow(3px 4px 4px #7b797965);
+}
+
+#commentForm {
+  margin-top: 20px;
+}
+
+.lineBrk {
+  border-bottom: 2px solid #ecf1f9;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#yourPosts {
+  margin-bottom: 30px;
+  border-radius: 0px;
+  border: none;
+}
+
 .instead {
   align-self: center;
   text-decoration: none;
@@ -137,7 +199,7 @@ form {
 
 .commentHead {
   /* border: 1.5px solid #ff0000 ; */
-  box-shadow: inset 2px 2px 5px #ff3434, inset -2px -2px 5px #ffbaba;
+  box-shadow: inset 2px 2px 5px rgba(154,158,255,1), inset -2px -2px 5px #ffbaba;
 }
 
 .homeHead {
@@ -147,6 +209,21 @@ form {
 
 .dashHead {
   box-shadow: inset 2px 2px 5px #974fe5, inset -2px -2px 5px #e4caff;
+  text-decoration: none;
+}
+
+#saveEditBtn, #deletePostBtn{
+  padding: 5px 30px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.dashDate{
+  text-align: center;
+  color: #6a798d;
+
 }
 
 #deleteAcctFr {

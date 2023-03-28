@@ -5,7 +5,7 @@
       <header class="card-header p-2 viewHead">{{post.title}}</header>
       <div class="card-body p-2">
       <p class="card-text">{{post.content}}</p>
-      <p class="card-footer auth-time">Written By: <span class="username">{{post.user.username}}</span> {{format_date post.created_at}}</p>
+      <p class="card-footer auth-time">Written By: <span class="username">{{post.user.username}}</span> on {{format_date post.created_at}}</p>
     </div>
     </div>
     </div>
@@ -17,12 +17,14 @@
         </label>
         <br/>
         <input type="hidden" id="userId" name="userId" value="{{userId}}">
-        <button type="submit" class="btn btn-primary submitBtn saveBtn" id="submitComment">Submit</button>
+        <button type="submit" class="btn btn-primary submitBtn saveBtn" id="submitComment">Submit Comment</button>
       </form>
+      <span class="lineBrk"></span>
+      <h3>Recent Comments</h3>
       {{#each post.comments as |comment|}}
-      <div class="col-12 mt-4">
+      <div class="col-5 mt-4">
       <div class="card border-secondary mb-3" style="max-width: 20rem;">
-          <header class="commentTitle card-header commentHead"><span class="username">{{comment.user.username}}</span> {{format_date comment.created_at}}</header>
+          <header class="commentTitle card-header commentHead"><span class="username">{{comment.user.username}}</span> on {{format_date comment.created_at}}</header>
           <div class="card-body">
           <p class="card-text commentText">{{comment.text}}</p>
           </div>
@@ -30,6 +32,7 @@
         </div>
       {{/each}}
     </div>
+  <span class="lineBrk"></span>
   </div>
 </section>
 
